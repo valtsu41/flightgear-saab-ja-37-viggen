@@ -57,7 +57,6 @@ input = {
   flame:            "engines/engine/flame",
   flapPosCmd:       "/fdm/jsbsim/fcs/flaps/pos-cmd",
   fuelRatio:        "/instrumentation/fuel/ratio",
-  fuelTemp:         "ja37/supported/fuel-temp",
   fullInit:         "sim/time/full-init",
   g3d:              "/velocities/groundspeed-3D-kt",
   gearSteerNorm:    "/gear/gear[0]/steering-norm",
@@ -229,11 +228,6 @@ var Saab37 = {
       bingoFuel = TRUE;
     }
 
-    #if (input.tank0LvlNorm.getValue() == 0) {
-      # a bug in JSB makes NaN on fuel temp if tank has been empty. [old bug, long fixed]
-      # input.fuelTemp.setBoolValue(FALSE);
-    #}
-
     #if(getprop("/sim/failure-manager/controls/flight/rudder/serviceable") == 1) {
     #  setprop("fdm/jsbsim/fcs/rudder/serviceable", 1);
     #} elsif (getprop("fdm/jsbsim/fcs/rudder/serviceable") == 1) {
@@ -360,10 +354,11 @@ var Saab37 = {
       #call(func{fgcommand('dialog-close', multiplayer.dialog.dialog.prop())},nil,var err= []);# props.Node.new({"dialog-name": "location-in-air"}));
       call(func{multiplayer.dialog.del();},nil,var err= []);
       if (!reload_allowed()) {
-        call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "WeightAndFuel"}))},nil,var err2 = []);        
+        call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "WeightAndFuel"}))},nil,var err2 = []);
         call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "system-failures"}))},nil,var err2 = []);
-        call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "instrument-failures"}))},nil,var err2 = []);  
+        call(func{fgcommand('dialog-close', props.Node.new({"dialog-name": "instrument-failures"}))},nil,var err2 = []);
         loadout.Dialog.close();
+        if (variant.AJS) ground_panel.Dialog.close();
       }
       setprop("sim/freeze/fuel",0);
       setprop("/sim/speed-up", 1);
@@ -1259,6 +1254,7 @@ var test_support = func {
   setprop("ja37/supported/picking", lexi_compare(version, [2017,2]) >= 0);
   setprop("ja37/supported/multiple-flightplans", lexi_compare(version, [2017,3,1]) >= 0);
   setprop("ja37/supported/compositor", lexi_compare(version, [2020,4,0]) >= 0);
+  setprop("ja37/supported/canvas-arcs", lexi_compare(version, [2020,3,9]) >= 0);
 
   if (lexi_compare(version, minVersion) < 0) {
     notice("Minimum supported Flightgear version for Saab 37 is "~minVersion);

@@ -81,6 +81,7 @@
             <path>ja37/effect/swedish-labels</path>
             <path>ja37/displays/live-map</path>
             <path>controls/displays/arrows-controls-cursor</path>
+            <path>controls/armament/ground-panel/automatic-settings</path>
             <!--<path>sim/model/livery/file</path>-->
         </aircraft-data>
 
@@ -518,6 +519,8 @@
             <picking type="bool">false</picking>
             <multiple-flightplans type="bool">false</multiple-flightplans>
             <compositor type="bool">false</compositor>
+            <!-- Nasal SVG parser bug https://sourceforge.net/p/flightgear/codetickets/2569/ -->
+            <canvas-arcs type="bool">false</canvas-arcs>
         </supported>
         <failures>
             <installed type="bool">false</installed>
@@ -1022,6 +1025,7 @@
                 <operational type="int">1</operational>
                 <cm-pod-loaded type="bool">false</cm-pod-loaded>
                 <start-left type="bool">true</start-left>
+                <automatic-settings type="bool">true</automatic-settings>
             </ground-panel>
             <station n="1">
                 <offsets>
@@ -1155,6 +1159,8 @@
         </ventilation>
         <flight>
             <trim-reset type="bool">false</trim-reset>
+            <trim-pitch type="int">0</trim-pitch>
+            <trim-roll type="int">0</trim-roll>
             <trim-yaw type="int">0</trim-yaw>
             <rudder-trim type="double">0.0</rudder-trim>
             <elevator-ap type="double">0.0</elevator-ap>
@@ -1345,31 +1351,31 @@
     <consumables>
         <fuel>
             <tank n="0">
-                <name>Fuselage Main Tank</name>
+                <name>Collector</name>
             </tank>
             <tank n="1">
-                <name>Fuselage Forward Tank</name>
+                <name>Fuselage Front</name>
             </tank>
             <tank n="2">
-                <name>Left Fuselage Minor Tank</name>
+                <name>Fuselage Left</name>
             </tank>
             <tank n="3">
-                <name>Right Fuselage Minor Tank</name>
+                <name>Fuselage Right</name>
             </tank>
             <tank n="4">
-                <name>Left Minor Wing Tank</name>
+                <name>Left Wing Front</name>
             </tank>
             <tank n="5">
-                <name>Right Minor Wing Tank</name>
+                <name>Right Wing Front</name>
             </tank>
             <tank n="6">
-                <name>Left wing tank</name>
+                <name>Left Wing</name>
             </tank>
             <tank n="7">
-                <name>Right wing tank</name>
+                <name>Right Wing</name>
             </tank>
             <tank n="8">
-                <name>Drop tank</name>
+                <name>External</name>
                 <jettisoned type="bool">false</jettisoned>
             </tank>
         </fuel>
@@ -1524,6 +1530,9 @@
             <chronometer-state type="int">0</chronometer-state>
             <chronometer-time-sec type="double">0</chronometer-time-sec>
         </clock>
+        <accelerometer>
+            <reset-button type="int">0</reset-button>
+        </accelerometer>
         <waypoint-indicator>
             <type type="int">0</type>
             <number type="int">0</number>
@@ -1573,7 +1582,7 @@
     <payload>
         <armament include="Systems/armament.xml"/>
         <weight n="6">
-            <name type="string">Center fuselage pylon</name>
+            <name type="string">C7</name>
             <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[7]"/>
             <selected>Drop tank</selected>
             <opt>
