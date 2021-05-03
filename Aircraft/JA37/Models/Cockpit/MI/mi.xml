@@ -220,14 +220,6 @@
         <type>pick</type>
         <object-name>indicator_tnf</object-name>
         <visible>true</visible>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>property-toggle</command>
-                <property>ja37/avionics/ins-cmd</property>
-            </binding>
-        </action>
         <hovered>
             <binding>
                 <command>set-tooltip</command>
@@ -488,11 +480,20 @@
         <type>pick</type>
         <object-name>button_pi</object-name>
         <visible>true</visible>
+        <action>
+            <name>Select datalink target</name>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>radar_logic.datalinkTarget();</script>
+            </binding>
+        </action>
         <hovered>
             <binding>
                 <command>set-tooltip</command>
                 <tooltip-id>jl</tooltip-id>
-                <label>Fighter link (not implemented)</label>
+                <label>Select datalink target</label>
             </binding>
         </hovered>
     </animation>

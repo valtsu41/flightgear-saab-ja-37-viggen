@@ -381,6 +381,8 @@ var RadarLogic = {
           input.locked_md5.setValue(left(md5(trackInfo.get_Callsign()), 4));
         }
         selection_updated = TRUE;
+      } elsif (datalink.get_contact(selection.get_Callsign()).on_link) {
+        selection_updated = TRUE;
       }
     }#end of foreach
   },#end of processTracks
@@ -788,6 +790,15 @@ var centerTarget = func () {
       }
     }
     setSelection(centerMost);
+  }
+};
+
+# Select datalink target
+var datalinkTarget = func() {
+  foreach(var contact; complete_list) {
+    if (datalink.get_contact(contact.get_Callsign()).on_link) {
+      setSelection(contact);
+    }
   }
 };
 
