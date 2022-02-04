@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Copyright (c) 2020 Josh Davidson (Octal450) -->
+
+<!-- A3XX Aircraft Config Dialog -->
+
+<PropertyList>
+
+	<name>system-failures</name>
+	<layout>vbox</layout>
+
+    <group>
+        <layout>hbox</layout>
+        <text>
+            <halign>left</halign>
+            <label>System Failures</label>
+        </text>
+        <button>
+            <halign>right</halign>
+            <pref-width>20</pref-width>
+            <pref-height>20</pref-height>
+            <legend>X</legend>
+            <key>Esc</key>
+            <binding>
+                <command>dialog-close</command>
+            </binding>
+        </button>
+    </group>
+	
+    <hrule/>
+	
+	<text>
+		<halign>left</halign>
+		<label>Failed when unchecked</label>
+	</text>
+	
+	<group>
+		<layout>hbox</layout>
+	
+		<group>
+			<layout>vbox</layout>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>Canopy</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>Canopy</label>
+				<halign>left</halign>
+				<property>/fdm/jsbsim/fcs/canopy/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Canopy hinges</label>
+				<halign>left</halign>
+				<property>/fdm/jsbsim/fcs/canopy/hinges/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>Instrumentation</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>Displays</label>
+				<halign>left</halign>
+				<property>/instrumentation/displays/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Instrumentation light</label>
+				<halign>left</halign>
+				<property>/instrumentation/instrumentation-light/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Radar</label>
+				<halign>left</halign>
+				<property>/instrumentation/radar/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>COMM 1</label>
+				<halign>left</halign>
+				<property>instrumentation/comm[0]/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>COMM 2</label>
+				<halign>left</halign>
+				<property>instrumentation/comm[1]/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Transponder</label>
+				<halign>left</halign>
+				<property>instrumentation/transponder/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+
+			<checkbox>
+				<label>Annunicator</label>
+				<halign>left</halign>
+				<property>ja37/avionics/annunciator/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+		</group>
+		
+		<vrule/>
+		
+		<group>
+			<layout>vbox</layout>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>Electric</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>Reserve generator</label>
+				<halign>left</halign>
+				<property>systems/generator-reserve/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>Engine</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>Reverser</label>
+				<halign>left</halign>
+				<property>controls/engines/engine/reverse-system/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Fire</label>
+				<halign>left</halign>
+				<property>engines/engine[0]/fire/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Afterburner</label>
+				<halign>left</halign>
+				<property>engines/engine/afterburner/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+
+		<group>
+			<layout>hbox</layout>
+
+			<hrule>
+				<stretch type="bool">true</stretch>
+			</hrule>
+			<text>
+				<label>FCS (not functional?)</label>
+			</text>
+			<hrule>
+				<stretch type="bool">true</stretch>
+			</hrule>
+		</group>
+			
+			<checkbox>
+				<label>Yaw damper</label>
+				<halign>left</halign>
+				<property>fdm/jsbsim/fcs/yaw-damper/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Pitch damper</label>
+				<halign>left</halign>
+				<property>fdm/jsbsim/fcs/pitch-damper/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Roll damper</label>
+				<halign>left</halign>
+				<property>fdm/jsbsim/fcs/roll-damper/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Roll limiter</label>
+				<halign>left</halign>
+				<property>/fdm/jsbsim/fcs/roll-limiter/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+
+			<checkbox>
+				<label>Nose wheel steering</label>
+				<halign>left</halign>
+				<property>fdm/jsbsim/gear/unit[0]/nose-wheel-steering/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+		</group>
+
+
+		<vrule/>
+		
+		<group>
+			<layout>vbox</layout>
+			
+			
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>Hydraulics</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>System 1 pump</label>
+				<halign>left</halign>
+				<property>fdm/jsbsim/systems/hydraulics/system1/main/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>System 2 pump</label>
+				<halign>left</halign>
+				<property>fdm/jsbsim/systems/hydraulics/system2/main/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>System 2 reserve pump</label>
+				<halign>left</halign>
+				<property>fdm/jsbsim/systems/hydraulics/system2/reserve/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<group>
+				<layout>hbox</layout>
+
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+				<text>
+					<label>Fuel</label>
+				</text>
+				<hrule>
+					<stretch type="bool">true</stretch>
+				</hrule>
+			</group>
+			
+			<checkbox>
+				<label>Pneumatics</label>
+				<halign>left</halign>
+				<property>fdm/jsbsim/systems/fuel/pneumatics/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+
+			<checkbox>
+				<label>Electric pumps</label>
+				<halign>left</halign>
+				<property>fdm/jsbsim/systems/fuel/fuel-pumps/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
+				<label>Fuel flow</label>
+				<halign>left</halign>
+				<property>fdm/jsbsim/systems/fuel/fuel-flow/serviceable</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+		
+			<hrule/>
+		</group>
+	</group>
+	
+</PropertyList>
